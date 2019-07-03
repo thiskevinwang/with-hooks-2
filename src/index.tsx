@@ -69,5 +69,8 @@ export const withEffect = (
  * compose
  * @param funcs
  */
-export const compose = (...funcs) =>
-  funcs.reduce((a, b) => (...args) => a(b(...args)), arg => arg)
+export const compose = (...funcs: any) =>
+  funcs.reduce(
+    (a: any, b: any) => (...args: any) => a(b(...args)),
+    (arg: any) => arg
+  )
