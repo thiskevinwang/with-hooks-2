@@ -2,17 +2,17 @@
  * @class ExampleComponent
  */
 
-import * as React from "react";
+import * as React from "react"
 
-import styles from "./styles.css";
+import styles from "./styles.css"
 
-export type Props = { text: string };
+export type Props = { text: string }
 
 export default class ExampleComponent extends React.Component<Props> {
   render() {
-    const { text } = this.props;
+    const { text } = this.props
 
-    return <div className={styles.test}>Example Component: {text}</div>;
+    return <div className={styles.test}>Example Component: {text}</div>
   }
 }
 
@@ -28,46 +28,46 @@ export const withState = (
   initialValue: string
 ) => (Component: React.FC) => {
   const Wrapper = React.memo(props => {
-    const [state, setState] = React.useState(initialValue);
+    const [state, setState] = React.useState(initialValue)
 
     const injectedProps = {
       [stateName]: state,
       [stateUpdaterName]: setState,
-    };
-    return <Component {...props} {...injectedProps} />;
-  });
+    }
+    return <Component {...props} {...injectedProps} />
+  })
 
-  return Wrapper;
-};
+  return Wrapper
+}
 
 /**
  * withEffect
  * @param func
  * @param cleanup
- * @param props
+ * @param watchedProps
  */
 export const withEffect = (
   func: CallableFunction,
   cleanup: CallableFunction,
-  props: Array<any>
+  watchedProps: Array<any>
 ) => (Component: React.FC) => {
-  const Wrapper = React.memo(() => {
+  const Wrapper = React.memo(props => {
     React.useEffect(() => {
-      func && func();
+      func && func()
       return () => {
-        cleanup && cleanup();
-      };
-    }, [...props]);
+        cleanup && cleanup()
+      }
+    }, [...watchedProps])
 
-    return <Component {...props} />;
-  });
+    return <Component {...props} />
+  })
 
-  return Wrapper;
-};
+  return Wrapper
+}
 
 /**
  * compose
  * @param funcs
  */
 export const compose = (...funcs) =>
-  funcs.reduce((a, b) => (...args) => a(b(...args)), arg => arg);
+  funcs.reduce((a, b) => (...args) => a(b(...args)), arg => arg)
