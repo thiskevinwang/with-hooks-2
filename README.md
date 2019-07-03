@@ -1,29 +1,25 @@
-# with-hooks-2
+# with-hooks
 
-> 
+>
 
-[![NPM](https://img.shields.io/npm/v/with-hooks-2.svg)](https://www.npmjs.com/package/with-hooks-2) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/with-hooks.svg)](https://www.npmjs.com/package/with-hooks) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
 ```bash
-npm install --save with-hooks-2
+npm install --save thiskevinwang/with-hooks#v<x.x.x>
 ```
 
 ## Usage
 
 ```tsx
-import * as React from 'react'
+import MyComponent, { withState } from "with-hooks-2"
 
-import MyComponent from 'with-hooks-2'
-
-class Example extends React.Component {
-  render () {
-    return (
-      <MyComponent />
-    )
-  }
+const Example = () => {
+  return <MyComponent />
 }
+
+const ExampleWithState = withState("foo", "setFoo", "bar")(Example)
 ```
 
 ## License
