@@ -13,7 +13,7 @@ npm install --save thiskevinwang/with-hooks#v<x.x.x>
 ## Usage
 
 ```tsx
-import MyComponent, { withState } from "with-hooks-2"
+import MyComponent, { withState } from "with-hooks"
 
 const Example = () => {
   return <MyComponent />
